@@ -4,35 +4,13 @@ using UnityEngine.Rendering.UI;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //=====================OPTION 2========================
-
-        //TryGetComponent<Rigidbody2D>(out rb);
-        //  if (rb == null)
-        //  {
-        //      Debug.LogError("Rigidbody2D component not found on PlayerController.");
-        //  }
-
-        //=====================OPTION 2========================
-
-        rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            Debug.LogError("Rigidbody2D component not found on PlayerController.");
-        }
-        else
-        {
-            Debug.Log($"Rigidbody2D exists on {rb.name}");
-        }
-
-        //=====================OPTION 3========================
-
-        //rb = GetComponent<Rigidbody2D>();
-
-        //if (rb != null) Debug.Log($"Rigidbody2D Existx {rb.name}.");
+        
     }
 
     // Update is called once per frame
