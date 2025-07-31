@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Collider2D col; // Collider to check for ground collision
+
+    [SerializeField]private int jumpLimit = 2; // Maximum number of jumps allowed (double jump enabled)
+    private int jumpCount = 1; // Counter for the number of jumps performed
+
     private Vector2 groundCheckPos => new Vector2(col.bounds.min.x + col.bounds.extents.x, col.bounds.min.y);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
 
         // Check if the groundLayer is set correctly
-        if (groundLayer == 0)
+        if (groundLayer == 1)
         {
             Debug.LogWarning("Ground layer not set or does not exist. Please create a layer named 'Ground' and assign it to the ground objects.");
         }
@@ -42,13 +46,23 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocityX = hValue * 5f;
 
         SpriteFlip(hValue); // Call the method to flip the sprite based on horizontal input
+        
+        // Check if the player is grounded using OverlapCircle
+        isGrounded = Physics2D.OverlapCircle(groundCheckPos, groundCheckRadius, groundLayer);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpLimit)
         {
             rb.AddForce(Vector2.up * 8f, ForceMode2D.Impulse); // AddForce applies a force to the Rigidbody2D
+            jumpCount++; // Increment the jump count when the player jumps
+            //Debug.Log($"Jump Count: {jumpCount}"); // Log the jump count for debugging
         }
 
-        isGrounded = Physics2D.OverlapCircle(groundCheckPos, groundCheckRadius, groundLayer);
+
+        if (isGrounded)
+        {
+            jumpCount = 1; // Reset the jump count when the player is grounded
+            //Debug.Log($"Jump Count: {jumpCount}"); // Log the jump count for debugging
+        }
     }
 
     void SpriteFlip(float hValue)
