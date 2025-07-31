@@ -1,15 +1,15 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Collider2D))] // Ensure the GameObject has these components
 public class PlayerController : MonoBehaviour
 {
-    private bool isGrounded = false; // Flag to check if the player is on the ground
+    [SerializeField] private bool isGrounded = false; // Flag to check if the player is on the ground
     private LayerMask groundLayer; // LayerMask to define which layers are considered ground
+
+    [SerializeField] private float groundCheckRadius = 0.02f; // Radius for ground checking, used in OverlapCircle
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
-
     [SerializeField] private Collider2D col; // Collider to check for ground collision
     private Vector2 groundCheckPos => new Vector2(col.bounds.min.x + col.bounds.extents.x, col.bounds.min.y);
 
@@ -40,6 +40,13 @@ public class PlayerController : MonoBehaviour
 
         // Initialize the groundLayer to include the "Ground" layer
         groundLayer = LayerMask.GetMask("Ground"); // Get the layer mask for the "Ground" layer
+
+
+        // Check if the groundLayer is set correctly
+        if (groundLayer == 0)
+        {
+            Debug.LogWarning("Ground layer not set or does not exist. Please create a layer named 'Ground' and assign it to the ground objects.");
+        }
     }
 
     // Update is called once per frame
@@ -52,10 +59,15 @@ public class PlayerController : MonoBehaviour
 
         SpriteFlip(hValue); // Call the method to flip the sprite based on horizontal input
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector2.up * 8f, ForceMode2D.Impulse); // AddForce applies a force to the Rigidbody2D
         }
+
+        // Check if the player is grounded by casting a ray downwards from the groundCheckPos
+        //isGrounded = Physics2D.Raycast(groundCheckPos, Vector2.down, 0.1f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheckPos, groundCheckRadius, groundLayer);
+
 
         //// Check if the player is grounded by casting a ray downwards from the groundCheckPos
         //isGrounded = Physics2D.Raycast(groundCheckPos, Vector2.down, 0.1f, groundLayer);
