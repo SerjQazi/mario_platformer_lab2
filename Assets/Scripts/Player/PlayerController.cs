@@ -13,22 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D col; // Collider to check for ground collision
     private Vector2 groundCheckPos => new Vector2(col.bounds.min.x + col.bounds.extents.x, col.bounds.min.y);
 
-
-    //private Vector2 groundCheckPos;
-    //Vector2 GetGroundCheckPos()
-    //{         // Calculate the position for ground checking based on the player's position and the collider's bounds
-    //          //return new Vector2(transform.position.x, col.bounds.min.y);
-
-    //    /*This method returns the position to check for ground collision
-    //      It uses the collider's bounds to determine the position at the bottom of the collider
-    //      This is useful for checking if the player is grounded by casting a ray downwards from this position
-    //      Return the position at the bottom of the collider's bounds*/
-
-    //    return new Vector2(col.bounds.min.x + col.bounds.extents.x, col.bounds.min.y);
-    //}
-
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,8 +36,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Raw input is used to get the input value without any smoothing or filtering
-        //This is useful for precise control, especially in platformers or fast-paced games
+        // Handle player input and movement
+        // Get horizontal input and apply it to the Rigidbody2D's velocity
         float hValue = Input.GetAxisRaw("Horizontal");
         rb.linearVelocityX = hValue * 5f;
 
@@ -64,36 +48,11 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * 8f, ForceMode2D.Impulse); // AddForce applies a force to the Rigidbody2D
         }
 
-        // Check if the player is grounded by casting a ray downwards from the groundCheckPos
-        //isGrounded = Physics2D.Raycast(groundCheckPos, Vector2.down, 0.1f, groundLayer);
         isGrounded = Physics2D.OverlapCircle(groundCheckPos, groundCheckRadius, groundLayer);
-
-
-        //// Check if the player is grounded by casting a ray downwards from the groundCheckPos
-        //isGrounded = Physics2D.Raycast(groundCheckPos, Vector2.down, 0.1f, groundLayer);
-        //// Debug.DrawRay(groundCheckPos, Vector2.down * 0.1f, Color.red); // Optional: Draw a ray in the editor for debugging
-        // Debug.Log($"Grounded: {isGrounded}"); // Optional: Log the grounded state for debugging
     }
-
-
 
     void SpriteFlip(float hValue)
     {
-        // Flip the sprite based on the horizontal input
-        //if (hValue < 0)
-        //{
-        //    sr.flipX = true; // Flip the sprite to face left
-        //}
-        //else if (hValue > 0)
-        //{
-        //    sr.flipX = false; // Flip the sprite to face right
-        //}
-
-        // Simplified sprite flipping logic
-        //sr.flipX = hValue < 0;
-        //if (hValue != 0 ) sr.flipX = hValue < 0; // Flip the sprite based on horizontal input
-
-        // Better, optimized sprite flipping logic
         // If the sprite is flipped and the horizontal input is in the opposite direction, flip it back
         if (hValue > 0 && sr.flipX || hValue < 0 && !sr.flipX)
         {
