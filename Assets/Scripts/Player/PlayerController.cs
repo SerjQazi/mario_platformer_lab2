@@ -66,9 +66,9 @@ public class PlayerController : MonoBehaviour
             //Debug.Log($"Jump Count: {jumpCount}"); // Log the jump count for debugging
 
             // update the animator parameters
+        }
             anim.SetFloat("hValue", Mathf.Abs(hValue)); // Set the horizontal value for the animator
             anim.SetBool("isGrounded", isGrounded); // Set the grounded state in the animator
-        }
     }
 
     void SpriteFlip(float hValue)
