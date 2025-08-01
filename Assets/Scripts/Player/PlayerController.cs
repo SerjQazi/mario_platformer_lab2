@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Collider2D))] // Ensure the GameObject has these components
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private bool isGrounded = false; // Flag to check if the player is on the ground
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Collider2D col; // Collider to check for ground collision
+    private Animator anim; // Animator component for animations
 
     [SerializeField]private int jumpLimit = 2; // Maximum number of jumps allowed (double jump enabled)
     private int jumpCount = 1; // Counter for the number of jumps performed
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the GameObject
         sr = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component attached to the GameObject
         col = GetComponent<Collider2D>(); // Get the Collider2D component to check for ground collision
+        anim = GetComponent<Animator>(); // Get the Animator component for animations
 
 
         // Initialize the groundLayer to include the "Ground" layer
@@ -61,6 +64,10 @@ public class PlayerController : MonoBehaviour
         {
             jumpCount = 1; // Reset the jump count when the player is grounded
             //Debug.Log($"Jump Count: {jumpCount}"); // Log the jump count for debugging
+
+            // update the animator parameters
+            anim.SetFloat("hValue", Mathf.Abs(hValue)); // Set the horizontal value for the animator
+            anim.SetBool("isGrounded", isGrounded); // Set the grounded state in the animator
         }
     }
 
