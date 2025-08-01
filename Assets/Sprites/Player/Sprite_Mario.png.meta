@@ -484,7 +484,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_17
+      name: 02_mario_run1
       rect:
         serializedVersion: 2
         x: 326
@@ -506,7 +506,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_18
+      name: 02_mario_run2
       rect:
         serializedVersion: 2
         x: 346
@@ -528,7 +528,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_19
+      name: 02_mario_run3
       rect:
         serializedVersion: 2
         x: 366
@@ -1144,7 +1144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_47
+      name: 01_mario_attack1
       rect:
         serializedVersion: 2
         x: 61
@@ -1166,7 +1166,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_48
+      name: 01_mario_attack2
       rect:
         serializedVersion: 2
         x: 79
@@ -1188,7 +1188,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_49
+      name: 01_mario_attack3
       rect:
         serializedVersion: 2
         x: 97
@@ -1465,11 +1465,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      01_mario_attack1: 351317690
+      01_mario_attack2: -961090786
+      01_mario_attack3: -630065988
       01_mario_idle: -1331005047
       01_mario_jump: 133954612
       01_mario_walk: 2078071366
       01_mario_walk2: 1833437482
       02_mario_idel: 651303071
+      02_mario_run1: -1871523506
+      02_mario_run2: 1341688229
+      02_mario_run3: -1153194674
       02_mario_walk5: -1363703339
       02_mario_walk6: -941111884
       20_mario_walk4: -1420086311
@@ -1480,9 +1486,6 @@ TextureImporter:
       Sprite_Mario_14: 1445459146
       Sprite_Mario_15: -237120175
       Sprite_Mario_16: 1232128899
-      Sprite_Mario_17: -1871523506
-      Sprite_Mario_18: 1341688229
-      Sprite_Mario_19: -1153194674
       Sprite_Mario_20: -663975351
       Sprite_Mario_21: 1465302279
       Sprite_Mario_22: -899693647
@@ -1510,9 +1513,6 @@ TextureImporter:
       Sprite_Mario_44: -1339436231
       Sprite_Mario_45: 1088951693
       Sprite_Mario_46: 326168179
-      Sprite_Mario_47: 351317690
-      Sprite_Mario_48: -961090786
-      Sprite_Mario_49: -630065988
       Sprite_Mario_50: -1558649761
       Sprite_Mario_51: 489703986
       Sprite_Mario_52: 844208129

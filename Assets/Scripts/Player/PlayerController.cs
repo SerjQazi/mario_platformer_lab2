@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D col; // Collider to check for ground collision
     private Animator anim; // Animator component for animations
 
+    public float speed = 5f;
+
     [SerializeField]private int jumpLimit = 2; // Maximum number of jumps allowed (double jump enabled)
     private int jumpCount = 1; // Counter for the number of jumps performed
 
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component attached to the GameObject
         col = GetComponent<Collider2D>(); // Get the Collider2D component to check for ground collision
         anim = GetComponent<Animator>(); // Get the Animator component for animations
-
+        
 
         // Initialize the groundLayer to include the "Ground" layer
         groundLayer = LayerMask.GetMask("Ground"); // Get the layer mask for the "Ground" layer
@@ -42,10 +44,35 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // if right click is pressed, player attack
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("attack", true); // Trigger the attack animation
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            anim.SetBool("attack", false); // Trigger the shoot animation
+        }
+
         // Handle player input and movement
         // Get horizontal input and apply it to the Rigidbody2D's velocity
         float hValue = Input.GetAxisRaw("Horizontal");
-        rb.linearVelocityX = hValue * 5f;
+        rb.linearVelocityX = hValue * speed;
+
+
+
+        // if holding shift toggle isRunning true and increase speed to 10f
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            anim.SetBool("isRunning", true); // Set the isRunning parameter to true in the animator
+            speed = 10f; // Increase speed to 10f when running
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            anim.SetBool("isRunning", false); // Set the isRunning parameter to false in the animator
+            speed = 5f;
+        }
 
         SpriteFlip(hValue); // Call the method to flip the sprite based on horizontal input
         
