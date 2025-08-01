@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 51851331}
   - component: {fileID: 51851332}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 52005019}
   - component: {fileID: 52005020}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 211239185}
   - component: {fileID: 211239186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 289668246}
   - component: {fileID: 289668248}
   - component: {fileID: 289668247}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Edge_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 763642018}
   - component: {fileID: 763642020}
   - component: {fileID: 763642019}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Edge_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 1056481227}
   - component: {fileID: 1056481229}
   - component: {fileID: 1056481228}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Edge_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 1115319369}
   - component: {fileID: 1115319371}
   - component: {fileID: 1115319370}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Edge_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1447,6 +1447,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4925afa788f24ea42a766e8d0708d4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 0
+  groundCheckRadius: 0.2
+  rb: {fileID: 0}
+  sr: {fileID: 0}
+  col: {fileID: 0}
+  jumpLimit: 2
 --- !u!1 &1992218124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1464,7 @@ GameObject:
   - component: {fileID: 1992218125}
   - component: {fileID: 1992218127}
   - component: {fileID: 1992218126}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Edge_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1552,7 +1558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2026566295}
   - component: {fileID: 2026566296}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1632,7 +1638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2106233638}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Edges
   m_TagString: Untagged
   m_Icon: {fileID: 0}

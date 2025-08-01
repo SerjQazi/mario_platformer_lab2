@@ -25,12 +25,11 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<Collider2D>(); // Get the Collider2D component to check for ground collision
 
 
-
         // Initialize the groundLayer to include the "Ground" layer
         groundLayer = LayerMask.GetMask("Ground"); // Get the layer mask for the "Ground" layer
 
 
-        // Check if the groundLayer is set correctly
+        //// Check if the groundLayer is set correctly
         if (groundLayer == 1)
         {
             Debug.LogWarning("Ground layer not set or does not exist. Please create a layer named 'Ground' and assign it to the ground objects.");
@@ -72,7 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             sr.flipX = !sr.flipX;
 
-        }
+        }        
 
     }
 }
